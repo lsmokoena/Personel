@@ -1,0 +1,4 @@
+C:\Users\lehana.mokoena\Documents\SACRRA\dsm\WebApp\bin\Debug\net462\dsm.deps.json
+C:\Users\lehana.mokoena\Documents\SACRRA\dsm\WebApp\bin\Debug\net462\dsm.runtimeconfig.json
+C:\Users\lehana.mokoena\Documents\SACRRA\dsm\WebApp\bin\Debug\net462\dsm.runtimeconfig.dev.json
+C:\Users\lehana.mokoena\Documents\SACRRA\dsm\WebApp\obj\Debug\net462\dsm.AssemblyInfo.cs

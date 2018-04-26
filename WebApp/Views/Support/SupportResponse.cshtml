@@ -1,0 +1,70 @@
+﻿@using Personel.ViewModel
+@model SupportsViewModel
+
+<div name="config" tbodyid="searchresultcontent" trowspan="3">
+    <div class="col-md-10 offset-md-1 white z-depth-1 py-1 pt-1">
+        <div class="row">
+            <div class="col-sm-5 col-md-3">
+            </div>
+            <div class="col-sm-5 col-md-6"></div>
+            <div class="col-sm-5 col-md-3">
+                <div class="md-form">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Subject</th>
+                                <th>Message</th>
+                                <th>Date</th>
+                                <th>Email</th>
+                                <th>Cell Number</th>
+                            </tr>
+                        </thead>
+                        <tbody id="searchresult">
+                            @foreach (var sup in Model.Supports)
+                            {
+                                <tr>
+                                    <td></td>
+                                    <td>@Model.Subjects.First(s => s.ID == sup.SubjectId).Subject</td>
+                                    <td>@sup.Message</td>
+                                    <td>@sup.CreatedDate</td>
+                                    <td>@sup.Email</td>
+                                    <td>@sup.CellNumber</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        @Html.Partial("~/Views/Shared/Pager.cshtml", Model.Pager)
+
+    </div>
+</div>
+
+@section scripts{
+    <script>
+            function pageToServer(){
+                var documentResultDiv = document.getElementById('searchresult');
+                var xhttp = new XMLHttpRequest();
+
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var parser = new DOMParser();
+                        var result = parser.parseFromString(xhttp.responseText,"text/html");
+                        documentResultDiv.innerHTML = result.getElementById('searchresult').innerHTML;
+                        console.log(result.getElementById('searchresult'));
+                    }
+                };
+                xhttp.open("GET", "http://localhost:5000/Users?PageNumber=2&PageSize=5", true);
+                xhttp.send();
+            }
+    </script>
+}

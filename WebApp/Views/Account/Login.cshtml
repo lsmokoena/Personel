@@ -1,0 +1,46 @@
+﻿@using Personel.ViewModel
+@model LoginViewModel
+
+<div class="container">
+    <div class="row" style="padding-top: 30px;">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <!--Panel-->
+            <div class="card mb-r">
+                <div class="card-header white-text primary-color">
+                    Sign In
+                </div>
+                <form action="@Url.Action("Login", "Account")" presubmit="validateForm('form',validateLoginForm)" method="post" id="form" data-indicator="false" data-strict-validator="false" data-submitButtonID="login">
+                    <div class="card-block">
+                        <div class="md-form">
+                            <i class="fa fa-envelope prefix"></i>
+                            <input type="email" id="username" name="username" value="@Model.Login.Username" class="form-control" required />
+                            <label for="username" id="lusername" data-error="" data-success="">Your email address</label>
+                        </div>
+                        <div class="md-form">
+                            <i class="fa fa-lock prefix"></i>
+                            <input type="password" id="password" name="password" value="@Model.Login.Password" class="form-control" required />
+                            <label for="password" id="lpassword" data-error="" data-success="">Your password</label>
+                        </div>
+                        <div class="text-center">
+                            <button type="button" id="login" class="btn primary-color waves-effect waves-light">Sign In</button>
+                        </div>
+                    </div>
+                    <div class="modal-footer text-center">
+                        <a href="@Url.Action("ForgotPassword", "Account")" class="btn dsm-skin-secondary-color">Forgot Password</a>
+                        <a href="@Url.Action("Index", "Register")" class="btn dsm-skin-secondary-color">Register</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        function validateLoginForm() {
+            return checkPasswordStrength('password');
+        }
+    </script>
+}

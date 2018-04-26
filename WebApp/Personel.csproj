@@ -1,0 +1,76 @@
+﻿<Project ToolsVersion="15.0" Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1.2</TargetFramework>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <IsPackable>false</IsPackable>
+    <PackageTargetFallback>portable-net45+win8</PackageTargetFallback>
+    <PostBuildEvent></PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='QA|AnyCPU'">
+    <WarningLevel>3</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="App_Data\**" />
+    <Compile Remove="Controllers\NewFolder\**" />
+    <Content Remove="App_Data\**" />
+    <Content Remove="Controllers\NewFolder\**" />
+    <EmbeddedResource Remove="App_Data\**" />
+    <EmbeddedResource Remove="Controllers\NewFolder\**" />
+    <None Remove="App_Data\**" />
+    <None Remove="Controllers\NewFolder\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="IdentityModel" Version="2.9.1" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="1.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.TagHelpers" Version="1.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.NodeServices" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="1.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="1.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="1.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="1.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.2" />
+    <PackageReference Include="Microsoft.NETCore.Portable.Compatibility" Version="1.0.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="1.1.1" />
+    <PackageReference Include="Portable.Licensing" Version="1.1.0" />
+    <PackageReference Include="SeriLog" Version="2.5.0" />
+    <PackageReference Include="SeriLog.Extensions.Logging" Version="1.4.0" />
+    <PackageReference Include="Serilog.Sinks.Literate" Version="3.0.0" />
+    <PackageReference Include="Serilog.Sinks.MSSqlServerCore" Version="1.1.0" />
+    <PackageReference Include="Serilog.Sinks.RollingFile" Version="3.3.0" />
+
+ 
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Files not to show in IDE -->
+    <None Remove="yarn.lock" />
+
+    <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\favicon.ico" />
+    <Content Include="wwwroot\img\img (1).jpg" />
+    <Content Include="wwwroot\img\img (10).jpg" />
+    <Content Include="wwwroot\img\img (32).jpg" />
+    <Content Include="wwwroot\img\iphone-portfolio1.png" />
+    <Content Include="wwwroot\js\popper.min.js" />
+    <Content Include="wwwroot\js\popper.min.js.download" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Logs\" />
+    <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="wwwroot\fonts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAL\DAL.csproj" />
+    <ProjectReference Include="..\Services\Services.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,272 @@
+﻿.dsm-skin {
+    /* Select colors */
+    background-color: #D9E0E7;
+}
+*::-webkit-input-placeholder {
+    color: black;
+}
+.search {
+    color: black;
+}
+.error {
+    background-color: red;
+}
+
+.error-button {
+    background-color: red;
+}
+
+.dsm-skin-primary-color-dark {
+    background-color: #2a535c;
+}
+.dsm-skin .error-button:active {
+    background-color: red;
+}
+.dsm-skin-secondary-color {
+    background-color: #2a535c;
+}
+
+.error-skin{
+    background-color: #f06364;
+}
+
+.warn-skin{
+    background-color: #f1b263;
+}
+
+.view {
+    border-color: #00ACAC !important;
+}
+.btn:hover {
+    /*background-color: #2a535c;*/
+}
+
+error::after(2) {
+    margin-top: 25px;
+}
+    .dsm-skin .primary-color {
+        background-color: #00ACAC !important;
+    }
+    .dsm-skin .primary-color:active {
+        background-color: #00ACAC !important;
+    }
+
+    .dsm-skin .navbar {
+        color: black;
+        background-color: #f0f3f5;
+    }
+
+    .dsm-skin .page-footer {
+        background-color: #d9d9d9;
+    }
+
+    .dsm-skin .double-nav a {
+        color: #212121;
+    }
+
+    .icons-color {
+        color: #a8acb1;
+    }
+
+.dsm-skin .side-nav {
+    background-color: #2e383e;
+}
+
+         .icons-color {
+            color: #a8acb1;
+        }
+
+        .dsm-skin .side-nav .logo-wrapper {
+            /*background: url("http://mdbootstrap.com/img/Photos/Others/whiteskin-bg.jpg") no-repeat center center;*/
+            -webkit-background-size: cover;
+            background-size: cover;
+        }
+
+        
+        .dsm-skin .side-nav .user-box {
+            color: #212121;
+            background-color: white;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+        }
+
+        .dsm-skin .side-nav .sn-avatar-wrapper img {
+            border: 3px solid #0d5bdd;
+        }
+
+        .dsm-skin .side-nav .social a:hover {
+            background-color: #080808;
+            -webkit-transition: all 0.3s linear;
+            -moz-transition: all 0.3s linear;
+            -o-transition: all 0.3s linear;
+            -ms-transition: all 0.3s linear;
+            transition: all 0.3s linear;
+        }
+
+        .dsm-skin .side-nav .collapsible li {
+            background-color: transparent;
+        }
+
+            .dsm-skin .side-nav .collapsible li a {
+                color: #d8e1eb;
+                font-weight: 400;
+            }
+
+                .dsm-skin .side-nav .collapsible li a .fa {
+                    color: #d8e1eb;
+                    font-weight: 400;
+                }
+
+            .dsm-skin .side-nav .collapsible li a .active{
+
+            }
+
+                .dsm-skin .side-nav .collapsible li a.active {
+                    color: #fff;
+                    font-weight: 500;
+                    background-color: #00acac;
+                }
+
+                    .dsm-skin .side-nav .collapsible li a.active .fa {
+                        color: #fff;
+                        -webkit-transition: color 0.3s linear;
+                        -moz-transition: color 0.3s linear;
+                        -o-transition: color 0.3s linear;
+                        -ms-transition: color 0.3s linear;
+                        transition: color 0.3s linear;
+                    }
+
+                .dsm-skin .side-nav .collapsible li a:hover {
+                    background-color: rgba(0, 0, 0, 0.05);
+                    -webkit-transition: all 0.3s linear;
+                    -moz-transition: all 0.3s linear;
+                    -o-transition: all 0.3s linear;
+                    -ms-transition: all 0.3s linear;
+                    transition: all 0.3s linear;
+                }
+
+        .dsm-skin .side-nav .fa {
+            color: #212121;
+        }
+
+    .dsm-skin .navbar .navbar-nav .dropdown .dropdown-primary .dropdown-item:hover {
+        background-color: #2a75f3;
+    }
+
+    .dsm-skin .btn-primary {
+        background: #00ACAC;
+    }
+<<<<<<< HEAD
+        
+        .dsm-skin .btn-primary:hover, .dsm-skin .btn-primary:focus {
+            background-color: #2a535c !important;
+=======
+
+        .dsm-skin .btn-primary:hover, .dsm-skin .btn-primary:focus {
+            background-color: #5a95f5 !important;
+>>>>>>> 0c6c120970b83d6cd181c5e0f4b5b69cce86d0ed
+        }
+
+        .dsm-skin .btn-primary.active {
+            background-color: #00ACAC !important;
+        }
+
+    .dsm-skin .btn-secondary {
+        background: #D25048;
+    }
+
+        .dsm-skin .btn-secondary:hover, .dsm-skin .btn-secondary:focus {
+            background-color: #d7645c !important;
+        }
+
+        .dsm-skin .btn-secondary.active {
+            background-color: #902a24 !important;
+        }
+
+    .dsm-skin .btn-default,
+    .dsm-skin .card .btn-action {
+        background: #0F0F0F;
+    }
+
+        .dsm-skin .btn-default:hover, .dsm-skin .btn-default:focus,
+        .dsm-skin .card .btn-action:hover,
+        .dsm-skin .card .btn-action:focus {
+            background-color: #1c1c1c !important;
+        }
+
+        .dsm-skin .btn-default.active,
+        .dsm-skin .card .btn-action.active {
+            background-color: black !important;
+        }
+
+    .dsm-skin input[type="email"]:focus:not([readonly]), .dsm-skin input[type="text"]:focus:not([readonly]), .dsm-skin input[type="password"]:focus:not([readonly]), .dsm-skin textarea.md-textarea:focus:not([readonly]) {
+        border-color: #4285F4;
+        box-shadow: 0 1px 0 0 #4285F4;
+    }
+
+        .dsm-skin input[type="email"]:focus:not([readonly]) + label, .dsm-skin input[type="text"]:focus:not([readonly]) + label, .dsm-skin input[type="password"]:focus:not([readonly]) + label, .dsm-skin textarea.md-textarea:focus:not([readonly]) + label {
+            color: #4285F4;
+        }
+
+    .dsm-skin input[type=checkbox]:checked + label:before {
+        border-right: 2px solid #4285F4;
+        border-bottom: 2px solid #4285F4;
+    }
+
+    .dsm-skin input[type=checkbox].filled-in:checked + label:before {
+        border-right: 2px solid #fff;
+        border-bottom: 2px solid #fff;
+    }
+
+    .dsm-skin input[type=checkbox].filled-in:checked + label:after {
+        background-color: #4285F4;
+        border-color: #4285F4;
+    }
+
+    .dsm-skin .md-form .prefix.active {
+        color: #4285F4;
+    }
+
+    .dsm-skin .dropdown-content li:not(.disabled) span {
+        color: #4285F4;
+    }
+
+    .dsm-skin .top-nav-collapse {
+        background-color: #fff;
+    }
+
+    .dsm-skin .carousel-multi-item .controls-top > a, .dsm-skin .carousel-multi-item .carousel-indicators li, .dsm-skin .carousel-multi-item .carousel-indicators li.active {
+        background-color: #4285F4;
+    }
+
+    .dsm-skin .tag, .dsm-skin .form-header, .dsm-skin .card-header {
+        background-color: #4c8bf5;
+    }
+.admin-panel.info-admin-panel .view {
+    background-color: #00ACAC;
+}
+.admin-panel.info-admin-panel .view,
+.admin-panel.info-admin-panel .table thead tr {
+    background-color: #00ACAC;
+}
+
+.pagination{
+    color: #00ACAC;
+}
+
+.active-toggle{
+    background-color: #D9E0E7;;
+}
+div.dataTables_wrapper div.dataTables_paginate {
+    margin: 0;
+    white-space: nowrap;
+    text-align: right;
+        color: red;
+}
+
+    div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+        margin: 2px 0;
+        white-space: nowrap;
+        color: red;
+            
+    }

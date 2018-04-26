@@ -1,0 +1,13 @@
+C:\Users\lehana.mokoena\Pictures\Dream\WebApp\bin\Debug\netcoreapp1.1.2\Dream.deps.json
+C:\Users\lehana.mokoena\Pictures\Dream\WebApp\bin\Debug\netcoreapp1.1.2\Dream.runtimeconfig.json
+C:\Users\lehana.mokoena\Pictures\Dream\WebApp\bin\Debug\netcoreapp1.1.2\Dream.runtimeconfig.dev.json
+C:\Users\lehana.mokoena\Pictures\Dream\WebApp\obj\Debug\netcoreapp1.1.2\Dream.csprojResolveAssemblyReference.cache
+C:\Users\lehana.mokoena\Pictures\Dream\WebApp\obj\Debug\netcoreapp1.1.2\Dream.AssemblyInfo.cs
+C:\Users\lehana.mokoena\Pictures\Dream\WebApp\bin\Debug\netcoreapp1.1.2\Dream.dll
+C:\Users\lehana.mokoena\Pictures\Dream\WebApp\bin\Debug\netcoreapp1.1.2\Dream.pdb
+C:\Users\lehana.mokoena\Pictures\Dream\WebApp\bin\Debug\netcoreapp1.1.2\DAL.dll
+C:\Users\lehana.mokoena\Pictures\Dream\WebApp\bin\Debug\netcoreapp1.1.2\Services.dll
+C:\Users\lehana.mokoena\Pictures\Dream\WebApp\bin\Debug\netcoreapp1.1.2\DAL.pdb
+C:\Users\lehana.mokoena\Pictures\Dream\WebApp\bin\Debug\netcoreapp1.1.2\Services.pdb
+C:\Users\lehana.mokoena\Pictures\Dream\WebApp\obj\Debug\netcoreapp1.1.2\Dream.dll
+C:\Users\lehana.mokoena\Pictures\Dream\WebApp\obj\Debug\netcoreapp1.1.2\Dream.pdb

@@ -1,0 +1,223 @@
+﻿@using Personel.ViewModel
+@model UsersViewModel
+
+@{ 
+    var user = Model.Users[0];
+}
+
+@section BackButton{
+    <a href="@Url.Action("Index", "Users")" class="btn btn-md primary-color" role="button">Close</a>
+}
+<div name="config" init="loadPage()"></div>
+<div class="container-fluid" id="userForm">
+
+    <form action="@Url.Action("Edit", "Users")" method="post" presubmit="validateForm('form',validatePerspective)" id="form" data-indicator="true" data-strict-validator="true" data-submitButtonID="submitUser">
+        <div class="row">
+            <div class="col-md-6">
+
+                <!--Panel-->
+                <div class="card mb-r">
+                    <div class="card-header white-text primary-color">
+                        User Profile
+                    </div>
+                    <div class="card-block">
+                        <input type="hidden" id="id" name="id" value="@user.ID" />
+                        <div class="md-form">
+                            <div class="md-form">
+                                <input type="text" id="firstname" fieldname="first name" name="firstname" class="form-control validate" pattern="[a-zA-Z\s]+" required value="@user.FirstName" />
+                                <label id="lfirstname" for="firstname" class="" data-error="" data-success="">First Name</label>
+                            </div>
+                        </div>
+                        <div class="md-form">
+                            <div class="md-form">
+                                <input type="text" id="lastname" fieldname="last name" name="lastname" class="form-control validate" pattern="[a-zA-Z\s]+" required value="@user.LastName" />
+                                <label id="llastname" for="lastname" class="" data-error="" data-success="">Last Name</label>
+                            </div>
+                        </div>
+                        <div class="md-form">
+                            <div class="md-form">
+                                <input type="email" id="email" fieldname="email address" name="email" class="form-control validate" value="@user.Email" required />
+                                <label id="lemail" for="email" class="" data-error="" data-success="">Email Address</label>
+                            </div>
+                        </div> 
+                        <div class="md-form">
+                            <div class="md-form">
+                                <input type="tel" id="telephonenumber" fieldname="telephone number" name="telephonenumber" class="form-control validate" pattern="\d+" value="@user.TelephoneNumber" />
+                                <label id="ltelephonenumber" for="telephonenumber" class="">Telephone Number</label>
+                            </div>
+                        </div>
+                        
+                        <div class="md-form">
+                            <fieldset class="form-group">
+                                <input type="checkbox" id="active" class="filled-in" name="active" value="@user.Active" checked="@user.Active">
+                                <label for="active">Active</label>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            <div class="col-md-6">
+                <input id="perspectiveArray" type="hidden" value="" name="perspectiveArray"/>
+                <!--Panel-->
+                <div class="card mb-r">
+                    <div class="card-header white-text primary-color">
+                        Perspectives
+                    </div>
+                    <div class="card-block">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="md-form">
+                                    <div class="md-form">
+                                        <fieldset class="form-group">
+                                            <input onchange="selectAllPerspectives()" id="selectall" class="filled-in" type="checkbox" name="saperspectives">
+                                            <label for="selectall"><i>(Select All)</i></label>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            </div>
+        @section SaveButton{
+            <button type="submit" id="submitUser" class="btn btn-md dsm-skin-primary-color-dark">Save</button>
+        }
+    </form>
+   
+
+    <div class="fixed-action-btn hiddendiv"  style="bottom: 45px; right: 24px;">
+        <a onclick="clickSubmitButton()" class="btn-floating btn-large primary-color red waves-effect waves-light">
+            <i class="fa fa-save"></i>
+        </a>
+    </div>
+</div>
+@section DialogBody{
+    <input placeholder="Search..." type="text" id="search" name="filter" value="" class="form-control input-underscore">
+
+        <div>
+            <table id="membertable">
+                <thead>
+                <th></th>
+                </thead>
+                <tbody id="memberTableBody">
+                </tbody>
+            </table>
+        </div>
+}
+@section DialogControls{
+    <div id="membercontrols">
+       <a id="add" onclick="addMember()" class="btn primary-color waves-effect waves-light">
+           Add
+       </a>
+       <a id="closedialog" onclick="dialog.closeDialog();" class="btn primary-color waves-effect waves-light">
+           Close
+       </a>
+    </div>
+}
+@section scripts{
+    <script>
+        function validateMembers(){
+            return new Promise((resolve, reject)=>{
+                var umemberId = document.getElementById('memberid').value;
+                if(umemberId == 0){
+                    reject(error.form.nomembererror);
+                }else{
+                    resolve();
+                }
+            });
+        }
+        function showSelectMemberDialog(){
+            dialog._dialogTitleBackground.classList.add('primary-color');
+            dialog._dialogTitle.innerText = 'Select Member';
+            dialog.showDialog();
+        }
+
+        function getSelectedMember(){
+            return new Promise((resolve,reject)=>{
+                var member = [];
+                var memberCheckboxes = document.getElementsByName('membersname');
+                memberCheckboxes.forEach((memberCheckbox)=>{
+                    if(memberCheckbox.checked){
+                        member.push({id:memberCheckbox.labels[0].getAttribute('memberid'), description: memberCheckbox.labels[0].innerText});
+                    }
+                })
+
+                if(member.length >0){
+                    resolve(member[0]);
+                }else{
+                    reject(error.form.nomembererror);
+                }
+
+            });
+        }
+
+        function addMember(){
+            getSelectedMember().then((member)=>{
+                console.log(member);
+                var membernamefield = document.getElementById('membername');
+                membernamefield.value = member.description;
+                
+                var memberidfield = document.getElementById('memberid');
+                memberidfield.value = member.id;
+
+                var lmemberidfield = document.getElementById('lmember');
+                lmemberidfield.classList.add('active');
+                dialog.closeDialog();
+            }).catch((error)=>{
+                dialog.displayErrorMessage(error);
+            });
+        }
+        var state = false;
+        function validatePerspective() {
+            return new Promise((resolve, reject) => {
+                validateMembers().then(()=>{
+                    var perspectives = document.getElementsByName('perspectives');
+                    var count = 0;
+                    perspectives.forEach((perspective) => {
+                        if (perspective.checked) {
+                            count++;
+                        }
+                    });
+                    if (count > 0) {
+                        resolve();
+                    } else {
+                        reject(error.form.perspectiveerror);
+                    }
+                }).catch((error)=>{
+                    reject(error);
+                })
+                
+            });
+        }
+
+        function getCheckedPerspectives(){
+            var perspectives = document.getElementsByName('perspectives');
+            var perspectiveField = document.getElementById('perspectiveArray');
+            var perspectiveArray = [];
+            perspectives.forEach((perspective)=>{
+                if(perspective.checked){
+                    perspectiveArray.push(perspective.id)
+                }
+            });
+            perspectiveField.value = perspectiveArray;
+            
+        }
+
+
+
+        function loadPage(){
+            getCheckedPerspectives();
+            mainTable.setTableSearchable('membertable', 'search');
+            console.log('testing');
+        }
+
+        function selectAllPerspectives(){
+            var selectAll = document.getElementById('selectall');
+            console.log('select all');
+            toggleSelect('perspectives',selectAll.checked);
+            getCheckedPerspectives();
+        }
+    </script>
+}

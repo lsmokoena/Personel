@@ -1,0 +1,60 @@
+﻿@using Personel.ViewModel
+@model RequestsViewModel
+
+@{
+    ViewData["Title"] = "Requests";
+}
+<div class="col-md-10 offset-md-1 white z-depth-1 py-1 pt-1">
+    <div class="row">
+        <div class="col-sm-6 col-md-9 py-1 px-1">
+            @*if (User.FindFirst("Update Account Types") != null)
+                {*@
+            <a href="@Url.Action("Edit", "Request", new { id = 0 })" id="newuser" class="btn primary-color waves-effect waves-light">
+                New Industry
+            </a>
+            @*}*@
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="md-form">
+                <input placeholder="Search..." type="text" id="searchfield" name="filter" value="" class="form-control input-underscore">
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Surname</th>
+                                <th>ID</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="searchresult">
+                            @foreach (var request in Model.Requests)
+                            {
+                                <tr>
+                                    <td>@request.PersonId</td>
+                                    <td>@request.UserId</td>
+                                    <td>@request.Note</td>
+                                    @*if (User.FindFirst("Update AccountType") != null)
+                                        {*@
+                                    <td>
+                                        <a href="@Url.Action("Edit", "Request", new { id = request.ID })" class="btn primary-color btn-sm">Edit</a>
+                                        <a href="#" onclick="" class="btn danger-color btn-sm">Delete</a>
+                                    </td>
+                                    @*}*@
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        @Html.Partial("~/Views/Shared/Pager.cshtml", Model.Pager)
+
+    </div>
+</div>

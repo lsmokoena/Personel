@@ -1,0 +1,8 @@
+Create new angular template
+===========================
+
+1. Install Visual Studio 2017
+2. Make sure you have NodeJS 6 (https://nodejs.org/en/) and higher
+3. Open up a new command window and type in the following to install new templates.
+	a. dotnet new --install Microsoft.AspNetCore.SpaTemplates::*
+	b. dotnet new angular

@@ -1,0 +1,11 @@
+C:\Users\lehana.mokoena\Documents\SACRRA\dsm\WebApp\bin\Debug\netcoreapp1.1\dsm.deps.json
+C:\Users\lehana.mokoena\Documents\SACRRA\dsm\WebApp\bin\Debug\netcoreapp1.1\dsm.runtimeconfig.json
+C:\Users\lehana.mokoena\Documents\SACRRA\dsm\WebApp\bin\Debug\netcoreapp1.1\dsm.runtimeconfig.dev.json
+C:\Users\lehana.mokoena\Documents\SACRRA\dsm\WebApp\bin\Debug\netcoreapp1.1\dsm.dll
+C:\Users\lehana.mokoena\Documents\SACRRA\dsm\WebApp\bin\Debug\netcoreapp1.1\dsm.pdb
+C:\Users\lehana.mokoena\Documents\SACRRA\dsm\WebApp\bin\Debug\netcoreapp1.1\DAL.dll
+C:\Users\lehana.mokoena\Documents\SACRRA\dsm\WebApp\bin\Debug\netcoreapp1.1\DAL.pdb
+C:\Users\lehana.mokoena\Documents\SACRRA\dsm\WebApp\obj\Debug\netcoreapp1.1\dsm.csprojResolveAssemblyReference.cache
+C:\Users\lehana.mokoena\Documents\SACRRA\dsm\WebApp\obj\Debug\netcoreapp1.1\dsm.AssemblyInfo.cs
+C:\Users\lehana.mokoena\Documents\SACRRA\dsm\WebApp\obj\Debug\netcoreapp1.1\dsm.dll
+C:\Users\lehana.mokoena\Documents\SACRRA\dsm\WebApp\obj\Debug\netcoreapp1.1\dsm.pdb

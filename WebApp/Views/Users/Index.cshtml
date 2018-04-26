@@ -1,0 +1,88 @@
+﻿@using Personel.ViewModel
+@model UsersViewModel
+
+<div name="config" tbodyid="searchresultcontent" trowspan="3"/>
+    <div class="col-md-10 offset-md-1 white z-depth-1 py-1 pt-1">
+        <div class="row">
+            <div class="col-sm-5 col-md-3">
+                @if (User.FindFirst("Update Users") != null)
+                {
+                    <a href="@Url.Action("Edit", "Users", new { id = 0 })" id="newuser" class="btn primary-color waves-effect waves-light">
+                        New User
+                    </a>
+                }
+            </div>
+            <div class="col-sm-5 col-md-6"></div>
+            <div class="col-sm-5 col-md-3">
+                <div class="md-form">
+                    <input placeholder="Search..." type="text" id="searchfield" name="filter" class="form-control" style="color: black;">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @*<fieldset class="form-group">
+                                            <input type="checkbox" class="filled-in" id="users">
+                                            <label for="users"></label>
+                                        </fieldset>*@
+                                </th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                                <th>Telephone</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="searchresult">
+                            @foreach (var user in Model.Users)
+                            {
+                                <tr>
+                                    <td>
+                                        @*<fieldset class="form-group">
+                                                <input type="checkbox" name="users " class="filled-in" id="@user.ID">
+                                                <label for="@user.ID"></label>
+                                            </fieldset>*@
+                                    </td>
+                                    <td>@user.FirstName</td>
+                                    <td>@user.LastName</td>
+                                    <td>@user.Email</td>
+                                    <td>@user.TelephoneNumber</td>
+                                    @if (User.FindFirst("Update Users") != null)
+                                    {
+                                        <td><a href="@Url.Action("Edit", "Users", new { id = user.ID })" class="btn primary-color btn-sm float-right">Edit</a></td>
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        @Html.Partial("~/Views/Shared/Pager.cshtml", Model.Pager)
+    </div>
+</div>
+
+    @section scripts{
+        <script>
+            function pageToServer(){
+                var documentResultDiv = document.getElementById('searchresult');
+                var xhttp = new XMLHttpRequest();
+            
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var parser = new DOMParser();
+                        var result = parser.parseFromString(xhttp.responseText,"text/html");
+                        documentResultDiv.innerHTML = result.getElementById('searchresult').innerHTML;
+                        console.log(result.getElementById('searchresult'));
+                    }
+                };
+                xhttp.open("GET", "http://localhost:5000/Users?PageNumber=2&PageSize=5", true);
+                xhttp.send();
+            }
+        </script>
+    }

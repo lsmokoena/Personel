@@ -1,0 +1,55 @@
+@import "css/style.css";
+@import "css/mdb.min.css";
+@import 'css/toastr.min.css';
+@import "css/bootstrap.min.css";
+@import 'css/app.css';
+@import "css/toastr.min.css";
+@import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css';
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+body.aliexpress-url .navbar.fixed-top {
+    box-shadow: none;
+}
+
+body .navbar.aliexpress-url {
+    display: none;
+}
+
+body.aliexpress-url .navbar.aliexpress-url {
+    display: block;
+    top: 50px;
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,.12) !important;
+}
+
+body.aliexpress-url webview {
+    top: 110px;
+}
+
+body.aliexpress-url .container-fluid {
+    padding-top: 60px;
+}
+
+.container-fluid {
+    padding-bottom: 60px;
+}
+
+body.tab-header .container-fluid {
+    padding-top: 60px;
+}
+
+.elegant-white-skin .side-nav {
+    background: initial;
+}
+
+    .elegant-white-skin .side-nav .social a:hover {
+        background-color: aliceblue;
+    }

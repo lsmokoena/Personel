@@ -1,0 +1,97 @@
+﻿@using Personel.ViewModel
+@model SupportsViewModel
+
+<div class="row">
+    <div class="col-md-7">
+        <!--Panel-->
+        <div class="card mb-r">
+            <div class="card-header white-text primary-color">
+                Information
+            </div>
+            <div class="card-block">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mi mi, ullamcorper consequat eleifend et, faucibus quis lacus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla facilisi. Nullam nec facilisis ante. Suspendisse id erat varius, imperdiet diam at, gravida justo. Proin vel libero tincidunt, euismod diam vulputate, faucibus libero. Fusce consectetur commodo porttitor. Etiam molestie convallis leo ut consequat. Donec diam leo, egestas vitae leo et, imperdiet porta turpis.</p>
+                <p>Fusce tortor nunc, sagittis eu odio eget, ultrices sodales elit. Donec ornare felis velit, facilisis pretium eros lobortis sed. Cras nec est ullamcorper, tempus arcu nec, suscipit tellus. Nam ultrices feugiat dictum. Mauris diam mi, elementum at vulputate dapibus, fermentum eu arcu. Aliquam erat volutpat. Praesent quis fringilla dolor. Quisque vitae aliquam eros. Vestibulum consequat mi vitae gravida bibendum. Nunc sollicitudin scelerisque diam, a imperdiet arcu elementum ac. Pellentesque fringilla vestibulum ipsum, feugiat imperdiet ipsum venenatis quis. Duis volutpat rutrum neque vel blandit. Mauris laoreet velit ut orci aliquam, ut maximus risus laoreet. Donec molestie felis a ornare suscipit.</p>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <!--Panel-->
+        <div class="card mb-r">
+            <div class="card-header white-text primary-color">
+                Contact Us
+            </div>
+            <div class="card-block">
+                <div class="md-form">
+                    <select class="mdb-select" id="subjectId" name="Support.SubjectId" required>
+                        <option value="" disabled selected>Choose your option</option>
+                        @foreach (var subject in Model.Supports)
+                        {
+                            <option value="@subject.ID">@subject.Message</option>
+                        }
+                    </select>
+
+                    <label for="accountTypeId">AccountType<span style="color: red;"> *<span></span></span></label>
+                </div>
+
+                <div class="md-form form-group">
+                    <i class="fa fa-envelope prefix"></i>
+                    <input type="email" id="emailaddress" name="Support.Email" class="form-control validate">
+                    <label for="emailaddress" data-error="" data-success="">Type your email</label>
+                </div>
+                <div class="md-form form-group">
+                    <i class="fa fa-phone prefix"></i>
+                    <input type="text" id="cellphone" name="Support.CellNumber" class="form-control validate">
+                    <label for="cellphone" data-error="" data-success="">Type your cell number</label>
+                </div>
+                <div class="md-form">
+                    <i class="fa fa-comment-o prefix"></i>
+                    <textarea type="text" id="message" name="Support.Message" class="md-textarea"></textarea>
+                    <label for="message">Your Message</label>
+                </div>
+                <button type="button" id="support" onclick="sendSupportRequest();" class="btn primary-color" style="width: 100%">Submit</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+<script>
+    $(document).ready(function () {
+        $("#emailaddress").value = "";
+        $("#cellphone").value = "";
+        $("#subjectId").value = 0;
+        $("#message").value = "";
+    });
+
+    function sendSupportRequest()
+    {
+        var email = document.getElementById("emailaddress").value;
+        var cellNumber = document.getElementById("cellphone").value;
+        var strSubjectId = document.getElementById("subjectId").value;
+        var message = document.getElementById("message").value;
+
+        var requestSupport = new XMLHttpRequest();
+        requestSupport.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                //toastr.success("Content updated successfully.");
+                location.reload();
+                console.log("Success......................");
+            }
+        };
+
+        var formData = new FormData();
+        var subjectId = parseInt(strSubjectId);
+
+        formData.append('email', email);
+        formData.append('cellNumber', cellNumber);
+        formData.append('subjectId', subjectId);
+        formData.append('message', message);
+
+        requestSupport.open("Post", '@Url.Action("RequestSupport", "Support")');
+        requestSupport.send(formData);
+    }
+</script>
+}
+

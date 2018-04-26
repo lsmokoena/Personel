@@ -1,0 +1,390 @@
+﻿@using Personel.ViewModel
+@model BaseViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@Model.Title - Personel</title>
+    <link rel=icon href="~/favicon.ico">
+    <environment names="Development">
+        <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/style.css" />
+        <meta name="theme-color" content="#ffffff" />
+        <link rel="stylesheet" href="~/css/font-awesome.min.css">
+        <link href="~/css/bootstrap.css" rel="stylesheet" />
+        <link href="~/css/mdb.css" rel="stylesheet" />
+        <link href="~/css/style.css" rel="stylesheet" />
+        <link href="~/css/dsm-skin.css" rel="stylesheet" />
+        <link href="~/css/toastr.min.css" rel="stylesheet" />
+        <link href="~/css/editor.css" rel="stylesheet" />
+
+    </environment>
+    <environment names="Staging,Production">
+        <!--<link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
+              asp-fallback-href="~/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />-->
+        <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+        <meta name="theme-color" content="#ffffff" />
+        <link href="~/css/bootstrap.css" rel="stylesheet" />
+        <link rel="stylesheet" href="~/css/font-awesome.min.css">
+        <link href="~/css/mdb.css" rel="stylesheet" />
+        <link rel="stylesheet" href="~/css/style.css" />
+        <link href="~/css/dsm-skin.css" rel="stylesheet" />
+        <link href="~/css/toastr.min.css" rel="stylesheet" />
+        <link href="~/css/editor.css" rel="stylesheet" />
+    </environment>
+
+    @RenderSection("styles", required: false)
+    <style>
+        label {
+            width: 100%;
+        }
+        .a{
+            font-size: 12px;
+            clear: none;
+            margin-right: 48px;
+            margin-top: -24px;
+        }
+
+        form-filled-invalid {
+            //margin-top: 28px;
+        }
+
+        .main-screen{
+            margin-left: 2%;
+            margin-right: 2%;
+            margin-top: 2%;
+        }
+
+        .nav-menu-button{
+            //margin-left: -25%;
+        }
+
+        .full-body {
+            //margin-left: -240px;
+        }
+        .tobar-full{
+            margin-top: -99px;
+        }
+        .full-body-title {
+            margin-left: -180px;
+        }
+        .paginate_button {
+            background-color: red;
+            color: white;
+            margin-left: 5px;
+            margin-right: 5px;
+            border-radius: 2px;
+            background-color: #00ACAC !important;
+            padding: 0.5rem 0.75rem;
+        }
+
+        .paginate_button:focus {
+            color: white;
+        }
+
+        .paginate_button:hover {
+            color: white;
+        }
+
+.cropit-preview {
+  /* You can specify preview size in CSS */
+  width: 960px;
+  height: 540px;
+}
+    </style>
+
+</head>
+
+<body class="fixed-sn dsm-skin main-bg" >
+    <input type="hidden" id="userstate" value="@Html.Raw(User.FindFirst("Name"))"/>
+    <header id="header">
+        
+        <!-- Sidebar navigation -->
+        <ul id="sidebar" class="side-nav fixed custom-scrollbar hiddendiv" style="transform: translateX(0%); margin-top: 100px;">
+            <!-- Logo -->
+            
+            <br/>
+                <ul class="collapsible collapsible-accordion">
+                    <li>
+                        <a class="collapsible-header waves-effect arrow-r"><i class="fa fa-user"></i> @Html.Raw((User.FindFirst("Name") == null) ? "Sacrra DSM" : @User.FindFirst("Name").Value) <i class="fa fa-angle-down rotate-icon"></i></a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                    <a name="menu-item" class="waves-effect" href="@Url.Action("Edit", "Profile")">Profile</a>
+                                </li>
+                                <li>
+                                    <a name="menu-item" href="@Url.Action("Logout", "Account")" id="logoff" class="waves-effect">Sign Out</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <br/>
+                    </li>
+                    <li>
+                        <a class="collapsible-header waves-effect arrow-r"><i class="fa fa-cubes"></i>Personel<i class="fa fa-angle-down rotate-icon"></i></a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                    <a name="menu-item" href="/Personel" menu-item class="waves-effect">Personel</a>
+                                </li>
+                                <li>
+                                    <a name="menu-item" href="/Request" menu-item class="waves-effect">Request</a>
+                                </li>
+                                <li>
+                                    <a name="menu-item" href="/Review" menu-item class="waves-effect">Review</a>
+                                </li>
+                                <li>
+                                    <a name="menu-item" href="/Address" menu-item class="waves-effect">Address</a>
+                                </li>
+                                <li>
+                                    <a name="menu-item" href="/User" menu-item class="waves-effect">User</a>
+                                </li>
+                                <li>
+                                    <a name="menu-item" href="/Location" menu-item class="waves-effect">Location</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="collapsible-header waves-effect arrow-r"><i class="fa fa-cubes"></i>Notifications<i class="fa fa-angle-down rotate-icon"></i></a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                    <a name="menu-item" href="/Notification" menu-item class="waves-effect">Notification</a>
+                                </li>
+                                <li>
+                                    <a name="menu-item" href="/NotificationType" menu-item class="waves-effect">Type</a>
+                                </li>
+                                <li>
+                                    <a name="menu-item" href="/NotificationContent" menu-item class="waves-effect">Content</a>
+                                </li>
+                                <li>
+                                    <a name="menu-item" href="/MessageType" menu-item class="waves-effect">Message Type</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="collapsible-header waves-effect arrow-r"><i class="fa fa-cubes"></i>Administrative<i class="fa fa-angle-down rotate-icon"></i></a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                    <a name="menu-item" href="/Bank" menu-item class="waves-effect">Bank</a>
+                                </li>
+                                <li>
+                                    <a name="menu-item" href="/AccountType" menu-item class="waves-effect">Account Type</a>
+                                </li>
+                                <li>
+                                    <a name="menu-item" href="/Country" menu-item class="waves-effect">Country</a>
+                                </li>
+                                <li>
+                                    <a name="menu-item" href="/Category" menu-item class="waves-effect">Category</a>
+                                </li>
+                                <li>
+                                    <a name="menu-item" href="/Skill" menu-item class="waves-effect">Skill</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="/Support" name="menu-item" menu-item data-breadcrumb="Support" class="collapsible-header waves-effect arrow-r"><i class="fa fa-support" ></i> Support</a>
+                    </li>
+                    <li>
+                        <a name="menu-item" href="/About" menu-item data-breadcrumb="About" class="collapsible-header waves-effect arrow-r" ><i class="fa fa-question-circle" aria-hidden="true"></i> About</a>
+                    </li>
+                </ul>
+            <!--/. Side navigation links -->
+        </ul>
+        <!--/. Sidebar navigation -->
+        <!-- Navbar -->
+        <nav id="topbar" style="padding-top: 12px; padding-bottom: 12px;" class="navbar fixed-top navbar-toggleable-md navbar-dark double-nav">
+          <a class="navbar-brand" href="#" style="margin-left: -240px; padding-left: 10px; padding-right: 15px;">
+                <img src="" width="215" alt="Logo">
+            </a>
+            <!-- SideNav slide-out button -->
+            <div class="float-left">
+                @if (!IsSectionDefined("BackButton"))
+                {
+                    @*<a class="btn-floating btn-large red" data-toggle="button" aria-pressed="false" autocomplete="off"><i class="fa fa-bars"></i></a>
+                    <button id="drawertoggle" type="button" toggle="false" class=" btn btn-floating btn-large" data-toggle="button" aria-pressed="false" autocomplete="off">
+                        <i class="fa fa-bars"></i>
+                    </button>*@
+                    
+                }
+                <div style="margin-left: 20px; display: none;" class="" id="toggleButtonSection">
+                        <button id="drawertoggle" type="button" toggle="false" class=" btn primary-color btn-floating btn-large hiddendiv" data-toggle="button" aria-pressed="false" autocomplete="off">
+                                <i class="fa fa-bars fa-2x"></i>
+                        </button>
+                </div>
+                
+            </div>
+            <!-- Breadcrumb-->
+            <div class="breadcrumb hidden-lg-down">  
+                <strong id="title" style="font-size: 20px;"> @Model.Title</strong>
+            </div>
+
+            <!--Navbar links-->
+            <ul class="nav navbar-nav nav-flex-icons ml-auto">
+                <li class="nav-item">
+                    @if (IsSectionDefined("BackButton"))
+                    {
+                        RenderSection("BackButton");
+                    }
+                    @if (IsSectionDefined("SaveButton"))
+                    {
+                        RenderSection("SaveButton");
+                    }
+                    @if (IsSectionDefined("Search"))
+                    {
+                        RenderSection("Search");
+                    }
+                    @*<form class="form-inline waves-effect waves-light">
+                        <input class="form-control ml-4 my-0 py-0" type="text" placeholder="Search">
+                        <button class="btn btn-sm ml-2 waves-effect waves-light"><i class="fa fa-search"></i>  </button>
+                    </form>*@
+                </li>
+               
+            </ul>
+            <!--/Navbar links-->
+        </nav>
+        <!-- /.Navbar -->
+    </header>
+    <main class="main-screen">
+        <!--style=""-->
+        <div id="content" >
+            <a href="" id="dialog-open" data-toggle="modal" data-target="#dialog"></a>
+            <a href="" id="dialog-close" data-toggle="modal" data-target="#dialog"></a>
+            @RenderBody()
+        </div>
+        <div class="modal fade" id="dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+
+            <div class="modal-dialog modal-notify modal-danger" id="dialogcontainer" role="document">
+                <!--Content-->
+                <div class="modal-content">
+                    <!--Header-->
+                    <div id="dialog-title-background" class="modal-header " style="color: white;">
+                        <p id="dialog-title" class="heading">Message</p>
+
+                    </div>
+
+                    <!--Body-->
+                    <div class="modal-body">
+
+                        <div class="row">
+                            
+                            <div class="col-12">
+                                <div id="dialog-content">
+
+                                </div>
+
+                                <div id="renderedsection">
+                                    @if (IsSectionDefined("DialogBody"))
+                                    {
+                                        RenderSection("DialogBody");
+                                    }
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Footer-->
+                    <div class="modal-footer justify-content-center"  id="dialog-control-section" style="color: white;">
+                        <div id="controlscontent">
+
+                        </div>
+                        
+                        <div id="default" class="hiddendiv">
+                                @if (IsSectionDefined("DialogControls"))
+                                {
+                                    RenderSection("DialogControls");
+                                }
+                                else
+                                {
+                                    <div id="dialog-controls">
+                                        
+                                    </div>
+                                }
+                        </div>
+                        
+                        <div id="logoffsection" class="hiddendiv">
+                            <button type="submit" id="signout" class="btn btn-md primary-color">Sign Out</button>
+                            <button type="submit" id="closelogoff" class="btn btn-md primary-color">Close</button>
+                        </div>
+
+                    </div>
+                </div>
+                <!--/.Content-->
+            </div>
+        </div>
+</main>
+    <script>
+    </script>
+    <environment names="Development">
+        <script src="~/js/jquery-2.2.3.min.js"></script>
+        <script src="~/js/jquery.cropit.js"></script>
+        <script src="~/js/jquery.dataTables.min.js"></script>
+        <script src="~/js/jquery-ui.js"></script>
+        <script src="~/js/tether.min.js"></script>
+        <script src="~/js/bootstrap.js"></script>
+        <script src="~/js/mdb.js"></script>
+        <script src="~/js/toastr.min.js"></script>
+        <script src="~/js/app.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.js"></script>
+        <script src="~/js/editor.js"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+
+        <script src="~/js/jquery-2.2.3.min.js"></script>
+        <script src="~/js/jquery.cropit.js"></script>
+        <script src="~/js/jquery.dataTables.min.js"></script>
+        <script src="~/js/tether.min.js"></script>
+        <script src="~/js/bootstrap.min.js"></script>
+        <script src="~/js/jquery-ui.js"></script>
+        <script src="~/js/mdb.js"></script>
+        <script src="~/js/toastr.min.js"></script>
+        <script src="~/js/app.js"></script>
+        <script type="text/javascript" src="https://mdbootstrap.com/live/_MDB/js/customizer.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.js"></script>
+        <script src="~/js/editor.js"></script>
+        <script src="~/js/popper.min.js"></script>
+    </environment>
+    @RenderSection("scripts", required: false);
+    <script>
+           $('.mdb-select').material_select();
+           $('button-collapse').sideNav();
+           $().button('toggle');
+
+        function initr(){
+            /*$('.mdb-select').material_select();*/
+            $('button-collapse').sideNav();
+            $().button('toggle');
+        }
+    </script>
+    @if (@TempData["ErrorMessage"] != null)
+    {
+        <script>
+            toastr.error("@Html.Raw(@TempData["ErrorMessage"])");
+        </script>
+    }
+    @if (@TempData["SuccessMessage"] != null)
+    {
+        <script>
+            toastr.success("@Html.Raw(@TempData["SuccessMessage"])");
+        </script>
+    }
+    @if (@TempData["InfoMessage"] != null)
+    {
+        <script>
+            toastr.info("@Html.Raw(@TempData["InfoMessage"])");
+        </script>
+    }
+</body>
+</html>
